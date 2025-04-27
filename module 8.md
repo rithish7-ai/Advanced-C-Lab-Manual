@@ -15,16 +15,59 @@ Algorithm:
 4.	Exit the program.
  
 Program:
+#include <stdio.h>
 
-//type your code here
+int main() {
+    int num;
+    printf("Enter a number (0-9): ");
+    scanf("%d", &num);
+
+    switch (num) {
+        case 0:
+            printf("zero\n");
+            break;
+        case 1:
+            printf("one\n");
+            break;
+        case 2:
+            printf("two\n");
+            break;
+        case 3:
+            printf("three\n");
+            break;
+        case 4:
+            printf("four\n");
+            break;
+        case 5:
+            printf("five\n");
+            break;
+        case 6:
+            printf("six\n");
+            break;
+        case 7:
+            printf("seven\n");
+            break;
+        case 8:
+            printf("eight\n");
+            break;
+        case 9:
+            printf("nine\n");
+            break;
+        default:
+            printf("Invalid input! Please enter a number between 0 and 9.\n");
+    }
+
+    return 0;
+}
+
 
 
 
 
 Output:
 
+![image](https://github.com/user-attachments/assets/fe4b92a5-541f-46da-97de-b5708561ed36)
 
-//paste your output here
 
 
 
@@ -46,16 +89,39 @@ Algorithm:
 6.	End
  
 Program:
+#include <stdio.h>
 
-//type your code here
+int main() {
+    int freq[10] = {0}; 
+    char ch;
+
+    printf("Enter digits (press Enter to finish):\n");
+
+    while ((ch = getchar()) != '\n') {
+        if (ch >= '0' && ch <= '9') {
+            freq[ch - '0']++; 
+        }
+    }
+
+    for (int i = 0; i < 10; i++) {
+        if (i <= 3) {
+            printf("%d ", freq[i]);
+        } else {
+            printf("0 "); 
+        }
+    }
+
+    printf("\n");
+    return 0;
+    }
 
 
 
 
 Output:
 
+![image](https://github.com/user-attachments/assets/e2024886-8f7a-4f5c-b581-82601e10eff2)
 
-//paste your output here
 
 
 
@@ -84,7 +150,63 @@ Free the memory allocated for each string in s Free the memory allocated for s
  
 Program:
 
-//type your code here
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+void swap(char *x, char *y) {
+    char temp = *x;
+    *x = *y;
+    *y = temp;
+}
+void sortString(char *str) {
+    int n = strlen(str);
+    for (int i = 0; i < n-1; i++) {
+        for (int j = i+1; j < n; j++) {
+            if (str[i] > str[j]) {
+                swap(&str[i], &str[j]);
+            }
+        }
+    }
+}
+
+int nextPermutation(char *str) {
+    int n = strlen(str);
+    int i = n - 2;
+    while (i >= 0 && str[i] >= str[i+1])
+        i--;
+
+    if (i < 0) return 0; 
+    int j = n - 1;
+    while (str[j] <= str[i])
+        j--;
+    swap(&str[i], &str[j]);
+    int left = i + 1, right = n - 1;
+    while (left < right) {
+        swap(&str[left], &str[right]);
+        left++;
+        right--;
+    }
+
+    return 1; 
+}
+
+int main() {
+    char str[100];
+
+    printf("Enter the string: ");
+    scanf("%s", str);
+
+    sortString(str);
+
+    do {
+        printf("%s\n", str);
+    } while (nextPermutation(str));
+
+    return 0;
+}
+
+
+
 
 
 
@@ -92,7 +214,8 @@ Program:
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/7f68ef5e-4589-4e81-980c-60b1f74a094d)
+
 
 
 
@@ -116,16 +239,33 @@ Algorithm:
 7.	End
  
 Program:
+#include <stdio.h>
 
-//type your code here
+int main() {
+    int n, num = 1;
+    printf("Enter N: ");
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {  
+        for (int j = 1; j <= i; j++) {  
+            printf("%d ", num);
+            num++;
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+
 
 
 
 
 Output:
+![image](https://github.com/user-attachments/assets/57eafad3-0301-4e6d-83ec-9d44188b0b69)
 
-
-//paste your output here
 
 
 
@@ -156,7 +296,24 @@ o	Call the square() function and display the result.
 
 Program:
 
-//type your code here
+#include <stdio.h>
+int findSquare() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    return num * num;  
+}
+
+int main() {
+    int square;
+    square = findSquare();
+    
+    printf("Square of the given number is: %d\n", square);
+
+    return 0;
+}
+
+
 
 
 
@@ -164,7 +321,8 @@ Program:
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/2244d71e-bd74-407c-a7fc-aca252a75767)
+
 
 
 
