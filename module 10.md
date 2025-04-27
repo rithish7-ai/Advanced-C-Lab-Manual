@@ -39,7 +39,8 @@ void insertEnd(struct Node** head, int value) {
         temp->next = newNode;
     }
 }
-void searchElement(struct Node* head, int key) {
+void searchElement(struct Node* head, int key)
+{
     int position = 1;
     struct Node* temp = head;
     
