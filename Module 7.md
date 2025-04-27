@@ -16,12 +16,34 @@ Else
  
 Program:
 
-//type your code here
+#include <stdio.h>
+
+#define MAX_PEOPLE 100
+struct Person {
+    int age;
+};
+
+int main() {
+    struct Person people[MAX_PEOPLE];
+    int n, i;
+    scanf("%d", &n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &people[i].age);
+    }
+    for (i = 0; i < n; i++) {
+        if (people[i].age >= 18) {
+            printf("Eligible for vaccine\n");
+        } else {
+            printf("Not eligible for vaccine\n");
+        }
+    }
+}
+
 
 
 Output:
+![image](https://github.com/user-attachments/assets/d93dce09-c1ae-49fe-9880-f7e69a672da3)
 
-//paste your output here
 
 
 Result:
@@ -44,16 +66,65 @@ Algorithm:
  
 Program:
 
-//type your code here
+#include <stdio.h>
+#include <string.h>
 
+struct Student {
+    char name[50];
+    int marks;
+};
+void displayStudent(struct Student s) {
+    printf("Name: %s\n", s.name);
+    printf("Marks: %d\n", s.marks);
+}
+void updateMarks(struct Student *s, int newMarks) {
+    s->marks = newMarks;
+}
+
+struct Student getTopper(struct Student s1, struct Student s2) {
+    if (s1.marks > s2.marks)
+        return s1;
+    else
+        return s2;
+}
+
+int main() {
+    struct Student student1, student2, topper;
+
+    printf("Enter name of student 1: ");
+    scanf("%s", student1.name);
+    printf("Enter marks of student 1: ");
+    scanf("%d", &student1.marks);
+
+    printf("\nEnter name of student 2: ");
+    scanf("%s", student2.name);
+    printf("Enter marks of student 2: ");
+    scanf("%d", &student2.marks);
+
+    printf("\nStudent 1 details:\n");
+    displayStudent(student1);
+
+    printf("\nStudent 2 details:\n");
+    displayStudent(student2);
+
+    updateMarks(&student1, student1.marks + 5);
+    printf("\nAfter adding bonus marks to Student 1:\n");
+    displayStudent(student1);
+
+    topper = getTopper(student1, student2);
+    printf("\nTopper is:\n");
+    displayStudent(topper);
+
+    return 0;
+}
 
 
 
 Output:
 
 
-//paste your output here
 
+![image](https://github.com/user-attachments/assets/08e4b3d6-fb30-4a94-8804-4c7b92c0b111)
 
 
 
@@ -86,15 +157,38 @@ Use scanf to input the file name into the name array.
  
 Program:
 
-//type your code here
 
+#include <stdio.h>
+
+int main() {
+    char filename[100];
+    FILE *fp;
+    char content[500];
+    printf("Enter the file name to create/write: ");
+    scanf("%s", filename);
+    fp = fopen(filename, "w");
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+    printf("Enter the content to write into the file:\n");
+    getchar(); 
+    fgets(content, sizeof(content), stdin);
+
+    fputs(content, fp);
+
+    printf("Content written successfully to %s\n", filename);
+
+    fclose(fp);
+
+    return 0;
+}
 
 
 
 Output:
+![image](https://github.com/user-attachments/assets/77da7abc-98d2-42df-88b5-76289137847c)
 
-
-//paste your output here
 
 
 
@@ -132,16 +226,55 @@ Use scanf to input the file name into the name array and the number of strings i
 5.	Return 0 to indicate successful program execution.
  
 Program:
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+int main() {
+    char filename[100];
+    FILE *fp;
+    char content[500];
+    char moreContent[500];
+
+    printf("Enter the file name: ");
+    scanf("%s", filename);
+
+    fp = fopen(filename, "w");
+    if (fp == NULL) {
+        printf("Error creating file!\n");
+        return 1;
+    }
+
+    printf("Enter the initial content to write into the file:\n");
+    getchar(); // clear newline left by scanf
+    fgets(content, sizeof(content), stdin);
+    fputs(content, fp);
+    fclose(fp);
+
+    printf("Initial content written successfully to %s\n", filename);
+    fp = fopen(filename, "a");
+    if (fp == NULL) {
+        printf("Error opening file for appending!\n");
+        return 1;
+    }
+
+    printf("\nEnter the additional content to insert into the file:\n");
+    fgets(moreContent, sizeof(moreContent), stdin);
+    fputs(moreContent, fp);
+
+    printf("Additional content inserted successfully into %s\n", filename);
+
+    fclose(fp);
+
+    return 0;
+}
+
 
 
 
 
 Output:
+![image](https://github.com/user-attachments/assets/b4061d88-0241-43df-8463-6be961132f1a)
 
-
-//paste your output here
 
 
 
@@ -187,15 +320,36 @@ Algorithm:
 
 Program:
 
-//type your code here
 
+#include <stdio.h>
+struct Student {
+    int rollNo;
+    char name[50];
+    float marks;
+};
+
+int main() {
+    struct Student s1; 
+    printf("Enter student roll number: ");
+    scanf("%d", &s1.rollNo);
+
+    printf("Enter student name: ");
+    scanf("%s", s1.name);
+
+    printf("Enter student marks: ");
+    scanf("%f", &s1.marks);
+    printf("Roll Number: %d\n", s1.rollNo);
+    printf("Name: %s\n", s1.name);
+    printf("Marks: %.2f\n", s1.marks);
+
+    return 0;
+}
 
 
 
 Output:
+![image](https://github.com/user-attachments/assets/e755a76b-185b-4ed9-b780-173561723958)
 
-
-//paste your output here
 
 
 
