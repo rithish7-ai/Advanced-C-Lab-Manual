@@ -1,5 +1,3 @@
-
-
 EXP NO:21 C PROGRAM TO CREATE A FUNCTION TO FIND THE GREATEST NUMBER
 Aim:
 To write a C program to create a function to find the greatest number
@@ -28,7 +26,7 @@ int greatest(int a, int b, int c) {
     } else if (b >= a && b >= c) {
         return b;
     } else {
-        return c;
+    return c;
     }
 }
 
